@@ -1,0 +1,8 @@
+CREATE TABLE contents (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  name TEXT,
+  md5 TEXT,
+  hash TEXT,
+  limited NUMERIC,
+  created NUMERIC
+);

@@ -1,0 +1,14 @@
+.main{
+    background-color: rgb(199, 52, 52);
+    font-family: arial;
+    font-size: 24px;
+    margin: 10px;
+    width: 80%;
+    height: 200px;
+}
+#upload-area{
+    background-color: rgb(171, 104, 104);
+    text-align: center;
+    height: 100px;
+    margin: 0 auto;
+}
