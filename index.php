@@ -24,6 +24,13 @@
                 <button type="button" onclick="file_upload()">アップロード2</button>
             </form>
         </div>
+        <!-- <p>id:<span id="id"></span></p> -->
+        <span class="ahaha"></span>
+        <div id="target">
+            <p id="downloadlink"></p>
+            
+        </div>
+        
     </div>
 </body>
 </html>

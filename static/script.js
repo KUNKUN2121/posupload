@@ -1,3 +1,4 @@
+// ドラッグアンドドロップ
 $(document).ready(function () {
 
     $("#upload-area").on("dragenter", function(e){
@@ -25,37 +26,46 @@ $(document).ready(function () {
 
 });
 
-
+// ファイルアップロード処理
 function file_upload()
 {
-    console.log("hello")
-    // フォームデータを取得
-    // let $upfile = $('input[name="file1"]');
-    // var formData = new FormData();
-    // formData.append("file1", $upfile.prop('files')[0]);
+    console.log("AJAX START")
     let $form = $('form');
     let formData = new FormData($form.get(0));
-
     $.ajax({
         url: "http://dev.kun.pink/posupload/model/uploader.php",
         type: "POST",
         data: formData,
-        processData: false,
+        processData: false, // FORM送る
         contentType: false,
         cache: false,
-    }).done(function (data) {
-        //取得jsonデータ
+    }).done(function (data,textStatus,jqXHR) {
+        console.log("3")
+        console.log('SUCCESS');
+        // 取得jsonデータ
         var data_stringify = JSON.stringify(data);
         var data_json = JSON.parse(data_stringify);
-        // 成功時の処理
-        console.log( 'SUCCESS', data );
+        console.log(data_json);
+        console.log(data_json["link"]);
+        var dllink = data_json["link"];
 
-    }).fail(function() {
-        // console.log( 'ERROR', jqXHR, textStatus, errorThrown );
-       // 失敗時の処理
+        var currentURL = $(location).attr('href'); // 現在のリンク
+        $("#downloadlink").text(currentURL + dllink);
+        
+        // コピーボタン追加
+        $('#target').append('<button id="linkcopy">リンクコピー</button>');
+
+
+    }).fail(function(jqXHR, textStatus, errorThrown) {
+        // 通信失敗時の処理
+        alert('ファイルのアプロードに失敗しました。');
+        console.log("Error AJAX");
+        console.log("jqXHR          : " + jqXHR.status); // HTTPステータスが取得
+        console.log("textStatus     : " + textStatus);    // タイムアウト、パースエラー
+        console.log("errorThrown    : " + errorThrown.message); // 例外情報
+        console.log("URL            : " + url);
     });
-
-
 }
+
 
 // https://maywork.net/computer/php-upload-drag-and-drop/
