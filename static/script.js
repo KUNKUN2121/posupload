@@ -32,7 +32,20 @@ function file_upload()
     console.log("AJAX START")
     let $form = $('form');
     let formData = new FormData($form.get(0));
+    
     $.ajax({
+        async: true,
+        xhr : function(){
+            var XHR = $.ajaxSettings.xhr();
+            if(XHR.upload){
+                XHR.upload.addEventListener('progress',function(e){
+                    var percent = parseInt(e.loaded / e.total * 10000) /100;
+                    $("#progressBar").text(percent + "%");
+                    $('#progress-bar').css("width",percent + "%");
+                }, false);
+            }
+            return XHR;
+        },
         url: "http://dev.kun.pink/posupload/model/uploader.php",
         type: "POST",
         data: formData,

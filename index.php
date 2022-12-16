@@ -24,6 +24,11 @@
                 <button type="button" onclick="file_upload()">アップロード2</button>
             </form>
         </div>
+        <div class="progress" id="progressDiv">
+            <div class="progress-bar" role="progressbar" id="progressBar" name="progressBar"></div>
+        </div>
+
+
         <!-- <p>id:<span id="id"></span></p> -->
         <span class="ahaha"></span>
         <div id="target">
@@ -32,6 +37,9 @@
         </div>
         
     </div>
+    <div id="progress">
+            <p id="progress-bar"></p>
+        </div>
 </body>
 </html>
 
