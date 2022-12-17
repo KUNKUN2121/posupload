@@ -1,23 +1,27 @@
 .main{
+    background-color: wheat;
     display: flex;
     flex-direction: column;
     align-items: center;
     margin: 0 auto;
     width: 50%;
+    padding: 2em;
 }
 #upload-area{
     background-color: #DDD;
-    text-align: center;
-    height: 100px;
+    /* height: 100px; */
     width: 100%;
-    margin: 0 auto;
     border: solid 5px #a2c4ef;/*線*/
-    border-radius: 10px; /*丸み*/
+    border-radius: 10px;
+}
+
+#upload-area > p{
+    text-align: center;
 }
 
 /* プログレスバー */
 #progress{
-    width:400px;
+    width:100%;
     height:50px;
     background-color:#ececec;
     position:relative;
